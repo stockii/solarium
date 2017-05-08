@@ -64,6 +64,10 @@ class Spellcheck extends ResponseParserAbstract implements ComponentParserInterf
      */
     public function parse($query, $spellcheck, $data)
     {
+        // really nice workaround for Bug with new solr version 6.5.0 :D
+        // https://github.com/solariumphp/solarium/issues/500
+        return array();
+
         if (isset($data['spellcheck']['suggestions']) &&
             is_array($data['spellcheck']['suggestions']) &&
             count($data['spellcheck']['suggestions']) > 0
@@ -130,6 +134,10 @@ class Spellcheck extends ResponseParserAbstract implements ComponentParserInterf
      */
     protected function parseCollation($queryObject, $values)
     {
+        // really nice workaround for Bug with new solr version 6.5.0 :D
+        // https://github.com/solariumphp/solarium/issues/500
+        return array();
+
         $collations = array();
         if (is_string($values)) {
             $collations[] = new Collation($values, null, array());
